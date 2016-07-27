@@ -204,7 +204,11 @@ class Autosuggest extends Component {
       onBlur && onBlur(this.onBlurEvent);
     }
 
-    this.maybeCallOnSuggestionsUpdateRequested({ value: clickedSuggestionValue, reason: 'click' });
+    this.maybeCallOnSuggestionsUpdateRequested({
+      value: clickedSuggestionValue,
+      reason: 'click',
+      suggestion: clickedSuggestion
+    });
 
     setTimeout(() => {
       this.justClickedOnSuggestion = false;
@@ -306,7 +310,11 @@ class Autosuggest extends Component {
               });
 
               this.maybeCallOnChange(event, newValue, 'enter');
-              this.maybeCallOnSuggestionsUpdateRequested({ value: newValue, reason: 'enter' });
+              this.maybeCallOnSuggestionsUpdateRequested({
+                value: newValue,
+                reason: 'enter',
+                suggestion: focusedSuggestion
+              });
             }
             break;
           }
